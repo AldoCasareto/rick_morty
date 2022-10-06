@@ -24,3 +24,58 @@ a {
     background: black;
   }
 }
+
+/* .container {
+  display: flex;
+} */
+
+/* .container {
+} */
+
+.cards {
+  margin-top: 2%;
+  gap: 0.625rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  padding: 0.25rem;
+  border-radius: 0.75rem;
+  max-width: 30%;
+  border: 0.063rem solid #bacdd8;
+}
+
+.card:hover {
+  transform: translate3D(0, -0.063rem, 0) scale(1.03);
+}
+
+img {
+  border-radius: 0.75rem;
+  object-fit: cover;
+  margin-bottom: 0.313rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  border-radius: 3.125rem;
+  margin-right: 0.188rem;
+  padding: 0.25rem 0.188rem;
+}
+
+.name {
+  font-size: 1.5rem;
+}
+
+.location {
+  font-size: 0.8rem;
+}
+
+.status_dot {
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 50%;
+  display: inline-block;
+}
