@@ -10,18 +10,18 @@ const Characters = ({ data }: Data) => {
   console.log(`defaultResults = `, defaultResults);
 
   const statusColor: any = {
-    alive: 'green',
-    dead: 'red',
-    unknown: 'gray',
+    Alive: 'green',
+    Dead: 'red',
+    Unknown: 'gray',
   };
 
   const color = 'alive';
   console.log(statusColor[color]);
 
-  const GENDER = {
-    male: <BsGenderMale />,
-    female: <BsGenderFemale />,
-    unknown: <BiQuestionMark />,
+  const GENDER: any = {
+    Male: <BsGenderMale />,
+    Female: <BsGenderFemale />,
+    Unknown: <BiQuestionMark />,
   };
 
   return (
@@ -58,7 +58,7 @@ const Characters = ({ data }: Data) => {
                   <span className='tag'>{character.species}</span>
                   <span className='tag'>
                     <>
-                      {/* {GENDER[character.gender]} */}
+                      {GENDER[character.gender]}
                       {character.gender}
                     </>
                   </span>
