@@ -25,13 +25,6 @@ a {
   }
 }
 
-/* .container {
-  display: flex;
-} */
-
-/* .container {
-} */
-
 .cards {
   margin-top: 2%;
   gap: 0.625rem;
@@ -53,7 +46,6 @@ a {
 
 img {
   border-radius: 0.75rem;
-  object-fit: cover;
   margin-bottom: 0.313rem;
 }
 
@@ -74,8 +66,17 @@ img {
 }
 
 .status_dot {
-  height: 0.75rem;
-  width: 0.75rem;
+  height: 0.6rem;
+  width: 0.6rem;
   border-radius: 50%;
   display: inline-block;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  margin: 0.25rem;
 }

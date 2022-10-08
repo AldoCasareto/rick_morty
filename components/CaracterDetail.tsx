@@ -1,9 +1,8 @@
 import React from 'react';
+import { Character } from '../types/types';
 
-type Props = {};
-
-const CharacterDetail = (props: Props) => {
-  return <div>CharacterDetail</div>;
+const CharacterDetail = ({ character }: Character) => {
+  return <div>{character.name}</div>;
 };
 
 export default CharacterDetail;
