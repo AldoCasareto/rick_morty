@@ -11,24 +11,28 @@ const Characters = ({ data }: Data) => {
   const { info, results: defaultResults = [] } = data;
   const [results, setResults] = useState(defaultResults);
   const [currentPage, setCurrentPage] = useState(1);
+  const [search, setSearch] = useState('');
 
   console.log(`currentPage = `, currentPage);
+  console.log(`search = `, search);
 
   useEffect(() => {
-    if (currentPage === 1) return;
+    // if (currentPage === 1) return;
 
     async function updatePage() {
-      const res = await fetch(`${defaultEndpoint}/?page=${currentPage}`);
+      const res = await fetch(
+        `${defaultEndpoint}/?page=${currentPage}&name=${search}`
+      );
       const { results } = await res.json();
 
-      console.log(currentPage);
-
-      console.log(`characters = `, results);
-
       setResults(results);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
     }
     updatePage();
-  }, [currentPage]);
+  }, [currentPage, search]);
 
   const statusColor: any = {
     Alive: 'green',
@@ -44,8 +48,11 @@ const Characters = ({ data }: Data) => {
 
   return (
     <div>
-      Characters
+      <input type='text' onChange={(e) => setSearch(e.target.value)} />
       <>
+        {results.map((gender) => (
+          <span>{gender.gender}</span>
+        ))}
         <div className='cards'>
           {results.map((character) => (
             <div className='card' key={character.id}>
