@@ -4,6 +4,7 @@ import { Data } from '..';
 import { BsGenderMale, BsGenderFemale } from 'react-icons/bs';
 import { BiQuestionMark } from 'react-icons/bi';
 import Link from 'next/link';
+import FilterButtons from '../../components/FilterButtons';
 
 const defaultEndpoint = 'https://rickandmortyapi.com/api/character';
 
@@ -12,6 +13,7 @@ const Characters = ({ data }: Data) => {
   const [results, setResults] = useState(defaultResults);
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState('');
+  const [status, setStatus] = useState('');
 
   console.log(`currentPage = `, currentPage);
   console.log(`search = `, search);
@@ -50,9 +52,8 @@ const Characters = ({ data }: Data) => {
     <div>
       <input type='text' onChange={(e) => setSearch(e.target.value)} />
       <>
-        {results.map((gender) => (
-          <span>{gender.gender}</span>
-        ))}
+        <FilterButtons label='status' results={results} callback={setStatus} />
+        {/* <FilterButtons label='species' results={results} /> */}
         <div className='cards'>
           {results.map((character) => (
             <div className='card' key={character.id}>
