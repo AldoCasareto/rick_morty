@@ -4,20 +4,24 @@ import { Character } from '../types/types';
 type Props = {};
 
 const FilterButtons = ({ label, results, callback }: any) => {
-  //   const { status, gender, species } = results;
-
-  //   console.log(`filter = `, labelFilter);
-  //   console.log('status', results[0].status);
-  //   console.log(label);
-
-  const labelFilter = `${label}`;
-
-  //   const labelFilter = [...new Set(results.map(({ label }) => label))];
+  const filterLabels = [
+    ...new Set(results.map((result: any) => result[label])),
+  ];
 
   return (
     <div>
-      {results.map(({ labelFilter }: any) => (
-        <button onClick={() => callback(status)}>{status}</button>
+      <h3>{label}</h3>
+      {/* {[
+        ...new Set(
+          results.map((result: any) => (
+            <button onClick={() => callback(result[label])}>
+              {result[label]}
+            </button>
+          ))
+        ),
+      ]} */}
+      {filterLabels.map((filters) => (
+        <button onClick={() => callback(filters)}>{filters}</button>
       ))}
     </div>
   );

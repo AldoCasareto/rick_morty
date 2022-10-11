@@ -1,96 +1,75 @@
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { Data } from '..';
-import { BsGenderMale, BsGenderFemale } from 'react-icons/bs';
-import { BiQuestionMark } from 'react-icons/bi';
-import Link from 'next/link';
+
 import FilterButtons from '../../components/FilterButtons';
+import { useRouter } from 'next/router';
+import CharacterDetail from '../../components/CharacterDetail';
+import { Character } from '../../types/types';
+import CharacterCard from '../../components/CharacterCard';
 
 const defaultEndpoint = 'https://rickandmortyapi.com/api/character';
 
-const Characters = ({ data }: Data) => {
+const Characters = ({ data, query }: any) => {
   const { info, results: defaultResults = [] } = data;
-  const [results, setResults] = useState(defaultResults);
+  const [results, setResults] = useState<Character>(defaultResults);
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState('');
+  const [gender, setGender] = useState('');
+  const [species, setSpecies] = useState('');
 
-  console.log(`currentPage = `, currentPage);
-  console.log(`search = `, search);
+  const router = useRouter();
 
   useEffect(() => {
-    // if (currentPage === 1) return;
+    // if (!search && !status && !gender && !species) return;
 
     async function updatePage() {
       const res = await fetch(
-        `${defaultEndpoint}/?page=${currentPage}&name=${search}`
+        `${defaultEndpoint}/?page=${currentPage}&name=${
+          search ?? search
+        }&status=${status ?? status}&gender=${gender}&species=${species}`
       );
       const { results } = await res.json();
 
       setResults(results);
+
       window.scrollTo({
         top: 0,
         behavior: 'smooth',
       });
     }
     updatePage();
-  }, [currentPage, search]);
 
-  const statusColor: any = {
-    Alive: 'green',
-    Dead: 'red',
-    unknown: 'gray',
-  };
-
-  const GENDER: any = {
-    Male: <BsGenderMale />,
-    Female: <BsGenderFemale />,
-    Unknown: <BiQuestionMark />,
-  };
+    router.push(
+      `characters/?page=${query.page}&name=${query.name}&status=${query.status}&gender=${query.gender}&species=${query.species}`,
+      undefined,
+      { shallow: true }
+    );
+  }, [currentPage, search, status, gender, species]);
 
   return (
     <div>
       <input type='text' onChange={(e) => setSearch(e.target.value)} />
       <>
         <FilterButtons label='status' results={results} callback={setStatus} />
-        {/* <FilterButtons label='species' results={results} /> */}
-        <div className='cards'>
-          {results.map((character) => (
-            <div className='card' key={character.id}>
-              <Link href={`/characters/${character.id}`}>
-                <a>
-                  <Image
-                    src={character.image}
-                    alt={character.name}
-                    width='480'
-                    height='480'
-                  />
-                  <div className='tags'>
-                    <span
-                      style={{
-                        backgroundColor: `${
-                          statusColor[`${character.status}`]
-                        }`,
-                      }}
-                      className='status_dot'
-                    ></span>
-                    <span className='tag'> {character.status}</span>
-                    <span className='tag'>{character.species}</span>
-                    <span className='tag'>
-                      <>
-                        {GENDER[character.gender]}
-                        {character.gender}
-                      </>
-                    </span>
-                  </div>
-
-                  <div className='name'>{character.name}</div>
-                  <div className='location'>{character.location.name}</div>
-                </a>
-              </Link>
-            </div>
-          ))}
-        </div>
+        <FilterButtons
+          label='species'
+          results={results}
+          callback={setSpecies}
+        />
+        <FilterButtons label='gender' results={results} callback={setGender} />
+        <button
+          onClick={() => {
+            setSpecies('');
+            setStatus('');
+            setGender('');
+            router.push('/characters');
+          }}
+        >
+          Clear Filters
+        </button>
+        <CharacterCard results={results} />
         <div className='buttons'>
           {currentPage === 1 ? (
             ''
@@ -109,9 +88,13 @@ const Characters = ({ data }: Data) => {
 
 export default Characters;
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ query, params }: any) {
   const res = await fetch(defaultEndpoint);
   const data: Data = await res.json();
+
+  console.log('query', query);
+  console.log(`foo = `, query.status);
+  console.log('params', params);
 
   if (!data) {
     return {
@@ -121,6 +104,7 @@ export async function getServerSideProps() {
   return {
     props: {
       data,
+      query,
     },
   };
 }
