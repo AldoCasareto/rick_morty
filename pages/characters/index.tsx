@@ -21,6 +21,8 @@ const Characters = ({ data, query }: any) => {
 
   const router = useRouter();
 
+  console.log(query);
+
   useEffect(() => {
     // if (!search && !status && !gender && !species) return;
 
