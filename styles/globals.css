@@ -38,6 +38,7 @@ a {
   border-radius: 0.75rem;
   max-width: 30%;
   border: 0.063rem solid #bacdd8;
+  width: 100%;
 }
 
 .card:hover {

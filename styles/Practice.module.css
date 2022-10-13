@@ -1,0 +1,50 @@
+.container {
+  max-width: 800px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.hero {
+  background-color: #23424a;
+  padding: 1.25rem 0;
+}
+
+.hero__text {
+  width: 60%;
+  color: white;
+  margin-bottom: 3.75px;
+}
+
+.btn {
+  border-radius: 50px;
+  background-color: #38cfd9;
+  border: none;
+  text-transform: uppercase;
+  padding: 10px 25px;
+  margin: 2.75rem 0;
+}
+
+.flex {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  /* text-align: center; */
+}
+
+.three__col {
+  padding: 2rem 0;
+}
+
+.three__col h3 {
+  color: #87629a;
+}
+
+.two__col {
+  background-color: #136c72;
+  color: white;
+  padding: 2rem 0;
+}
+
+.col {
+  width: 100%;
+}
