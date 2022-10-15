@@ -15,16 +15,6 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-}
-
 .cards {
   margin-top: 2%;
   gap: 0.625rem;
@@ -45,9 +35,18 @@ a {
   transform: translate3D(0, -0.063rem, 0) scale(1.03);
 }
 
-img {
+/* img {
   border-radius: 0.75rem;
   margin-bottom: 0.313rem;
+} */
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2 {
+  margin: 0;
 }
 
 .tag {
@@ -80,4 +79,13 @@ img {
 
 button {
   margin: 0.25rem;
+}
+
+header {
+  background-color: #23424a;
+  padding: 0.5rem 0;
+}
+
+section {
+  padding: 4em 0;
 }

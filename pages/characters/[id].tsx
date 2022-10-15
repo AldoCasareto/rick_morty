@@ -1,5 +1,5 @@
 import React from 'react';
-import CharacterDetail from '../../components/CaracterDetail';
+import CharacterDetail from '../../components/CharacterDetail';
 import { Character } from '../../types/types';
 
 const Character = ({ character }: Character) => {

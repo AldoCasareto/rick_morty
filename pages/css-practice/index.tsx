@@ -7,6 +7,22 @@ type Props = {};
 const index = (props: Props) => {
   return (
     <div>
+      <header>
+        <div className={styles.container}>
+          <nav className={`${styles.nav} `}>
+            <ul className={styles.nav__list}>
+              <img src='logo.svg' alt='logo' />
+
+              <li className='nav__item'>Home</li>
+              <li className='nav__item'>About</li>
+              <li className='nav__item'>Contact</li>
+              <li className={styles.nav__push_right}>Sign in</li>
+              <li className={styles.nav__link__button}>Sign up</li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
       <div className={styles.hero}>
         <div className={`${styles.container} ${styles.flex}`}>
           <div className={styles.hero__text}>
@@ -18,10 +34,8 @@ const index = (props: Props) => {
             <button className={styles.btn}>I want to learn</button>
           </div>
           <div className={styles.image}>
-            <Image
+            <img
               src='https://rickandmortyapi.com/api/character/avatar/379.jpeg'
-              width='200%'
-              height='200%'
               alt='image'
             />
           </div>
@@ -76,6 +90,47 @@ const index = (props: Props) => {
           </div>
         </div>
       </section>
+      <main className={`${styles.container} ${styles.main} ${styles.flex}`}>
+        <section className={styles.left}>
+          <h2>Quality designs made custom, on demand, just for you</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+            aliqua. Ut enim ad minim veniam.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+            aliqua. Ut enim ad minim veniam.
+          </p>
+        </section>
+        <aside className={styles.right}>
+          <h3>Cheap</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis,
+            aspernatur necessitatibus possimus ex animi ipsa facere nulla iure
+            ullam sapiente!
+          </p>
+
+          <h3>Quick</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis,
+            aspernatur necessitatibus possimus ex animi ipsa facere nulla iure
+            ullam sapiente!
+          </p>
+
+          <h3>Quality</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis,
+            aspernatur necessitatibus possimus ex animi ipsa facere nulla iure
+            ullam sapiente!
+          </p>
+        </aside>
+      </main>
     </div>
   );
 };

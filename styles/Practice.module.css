@@ -12,7 +12,12 @@
 .hero__text {
   width: 60%;
   color: white;
-  margin-bottom: 3.75px;
+}
+
+.image {
+  align-self: start;
+  border: 4px solid yellow;
+  width: 32%;
 }
 
 .btn {
@@ -47,4 +52,42 @@
 
 .col {
   width: 100%;
+}
+
+.main {
+  margin-top: 2rem;
+}
+
+.right {
+  background-color: #136c72;
+  width: 32%;
+  text-align: center;
+  color: white;
+  padding: 1rem;
+}
+
+.nav__link__button {
+  background: #fff;
+  color: #136c72;
+  padding: 0.1rem 0.5rem;
+  border-radius: 10em;
+}
+
+.left {
+  width: 60%;
+}
+
+.nav__list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  gap: 10px;
+  color: white;
+  text-transform: uppercase;
+  align-items: center;
+}
+
+.nav__push_right {
+  margin-left: auto;
 }
