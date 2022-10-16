@@ -23,13 +23,13 @@ a {
   justify-content: center;
 }
 
-.card {
+/* .card {
   padding: 0.25rem;
   border-radius: 0.75rem;
   max-width: 30%;
   border: 0.063rem solid #bacdd8;
   width: 100%;
-}
+} */
 
 .card:hover {
   transform: translate3D(0, -0.063rem, 0) scale(1.03);
@@ -81,10 +81,10 @@ button {
   margin: 0.25rem;
 }
 
-header {
+/* header {
   background-color: #23424a;
   padding: 0.5rem 0;
-}
+} */
 
 section {
   padding: 4em 0;

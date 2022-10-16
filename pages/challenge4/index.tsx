@@ -4,7 +4,7 @@ import styles from '../../styles/Challenge4.module.css';
 const index = () => {
   return (
     <div>
-      <section className={`${styles.hero} ${styles.center} `}>
+      <section className={`${styles.hero}  `}>
         <div className={styles.container}>
           <p className={styles.intro__text}>lorem ipsum sit</p>
           <h1 className={styles.intro__title}>
